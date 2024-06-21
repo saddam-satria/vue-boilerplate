@@ -16,7 +16,7 @@ const setMessage = (message: string) => {
     </a>
 
     <button @click="setMessage('hello')">change state</button>
-    <RouterLink to="/about">Go to About</RouterLink>
+    <RouterLink v-for="item in [1, 2]" :to="{ name: 'About', params: { id: item } }">About</RouterLink>
   </div>
   <Welcome msg="Vite + Vue" />
 </template>
