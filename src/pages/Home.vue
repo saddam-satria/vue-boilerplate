@@ -1,5 +1,12 @@
 <script setup lang="ts">
 import Welcome from '@/components/welcome.vue';
+import { welcomeStore } from '@/stores/welcome';
+
+const welcome = welcomeStore();
+
+const setMessage = (message: string) => {
+  welcome.setMessage(message);
+};
 </script>
 
 <template>
@@ -7,6 +14,8 @@ import Welcome from '@/components/welcome.vue';
     <a href="https://vitejs.dev" target="_blank">
       <img src="/vite.svg" class="logo" alt="Vite logo" />
     </a>
+
+    <button @click="setMessage('hello')">change state</button>
     <RouterLink to="/about">Go to About</RouterLink>
   </div>
   <Welcome msg="Vite + Vue" />
