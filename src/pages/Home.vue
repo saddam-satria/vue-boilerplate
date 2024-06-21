@@ -1,12 +1,19 @@
 <script setup lang="ts">
 import Welcome from '@/components/welcome.vue';
 import { welcomeStore } from '@/stores/welcome';
+import getTodos from '@/services/getTodos';
+import { onMounted, ref, watch } from 'vue';
 
 const welcome = welcomeStore();
+const todos = getTodos();
 
 const setMessage = (message: string) => {
   welcome.setMessage(message);
 };
+
+onMounted(() => {
+  todos.action();
+});
 </script>
 
 <template>
@@ -17,6 +24,11 @@ const setMessage = (message: string) => {
 
     <button @click="setMessage('hello')">change state</button>
     <RouterLink v-for="item in [1, 2]" :to="{ name: 'About', params: { id: item } }">About</RouterLink>
+
+    <span>{{ todos.loading }}</span>
+    <div class="grid grid-cols-3">
+      <span v-if="todos" v-for="todo in todos.data.value.slice(0, 10)">{{ todo.title }}</span>
+    </div>
   </div>
   <Welcome msg="Vite + Vue" />
 </template>
