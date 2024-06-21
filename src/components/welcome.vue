@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, watch, computed } from 'vue';
+import { ref, onMounted, watch, computed } from 'vue';
 import { addIcons } from 'oh-vue-icons';
 import { BiMusicPlayer } from 'oh-vue-icons/icons';
 import { welcomeStore } from '@/stores/welcome';
