@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: dockerfiles/prod.dockerfile
+    ports:
+      - '3000:80'
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/http.d/default.conf
+    networks:
+      - posq_network
+
+networks:
+  posq_network:
+    driver: bridge
