@@ -6,12 +6,10 @@ services:
       context: .
       dockerfile: dockerfiles/prod.dockerfile
     ports:
-      - '3000:80'
-    volumes:
-      - ./nginx/nginx.conf:/etc/nginx/http.d/default.conf
+      - '3000:3000'
     networks:
-      - posq_network
+      - vue_boilerplate
 
 networks:
-  posq_network:
+  vue_boilerplate:
     driver: bridge
